@@ -1,0 +1,90 @@
+SQL> -------QUERIES ON MAXIMUM & MINIMUM--------------
+SQL> -----1)WAQTD NAME OF THE EMPLOYEE EARNING MAX SAL?
+SQL> SELECT ENAME 
+  2  FROM EMP 
+  3  WHERE SAL = (SELECT MAX(SAL)
+  4  FROM EMP);
+
+ENAME
+----------
+KING
+
+SQL> -----2)WAQTD NAME OF THE EMPLOYEE EARNING MINIMUM SAL?
+SQL> SELECT ENAME 
+  2  FROM EMP
+  3  WHERE SAL = (SELECT MIN(SAL)
+  4  FROM EMP);
+
+ENAME
+----------
+SMITH
+
+SQL> -------3)WAQTD NAME AND HIREDATE OF THE EMP HIRED BEFORE ALL THE EMPLOYEE(FIRSTEMP)?
+SQL> SELECT ENAME ,HIREDATE
+  2  FROM EMP
+  3  WHERE HIREDATE =(SELECT MIN(HIREDATE)
+  4  FROM EMP);
+
+ENAME      HIREDATE
+---------- ---------
+SMITH      17-DEC-80
+
+SQL> --------4)WAQTD NAME AND HIREDATE OF THE EMPLOYEE HIRED AFTER AT THE LAST?
+SQL> SELECT ENAME ,HIREDATE
+  2  FROM EMP
+  3  WHERE HIREDATE = (SELECT MIN(HIREDATE)
+  4  FROM EMP);
+
+ENAME      HIREDATE
+---------- ---------
+SMITH      17-DEC-80
+
+SQL> --------5) WAQTD NAME,COMM OF THE EMP EARNING MINIMUM COMM?
+SQL> SELECT ENAME ,COMM
+  2  FROM EMP
+  3  WHERE COMM = (SELECT MIN(COMM)
+  4  FROM EMP);
+
+ENAME            COMM
+---------- ----------
+TURNER              0
+
+SQL> -----------6)WAQTD  NAME ,SAL AND COMM OF THE EMP EARNING MAXIMUM COMM?
+SQL> SELECT ENAME,SAL,COMM
+  2  FROM EMP
+  3  WHERE COMM =(SELECT MAX(COMM)
+  4  FROM EMP);
+
+ENAME             SAL       COMM
+---------- ---------- ----------
+MARTIN           1250       1400
+
+SQL> ----------7)WAQTD DETAILS OF THE EMP WHO HAS GREATEST EMPNO?
+SQL> SELECT*
+  2  FROM EMP
+  3  WHERE EMPNO =(SELECT MAX(EMPNO)
+  4  FROM EMP);
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
+
+SQL> -------------8)WAQTD DETAILS OF THE EMPLOYEES HAVING THE LEAST HIREDATE?
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE HIREDATE =(SELECT MIN(HIREDATE)
+  4  FROM EMP);
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+
+SQL> ----------9)WAQTD DETAILS OF THE EMPLOYEE HAVING THE EARNING LEAST ANNUAL SAL?
+SQL> SELECT*
+  2  FROM EMP
+  3  WHERE SAL*12= (SELECT MIN(SAL*12)
+  4  FROM EMP);
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
