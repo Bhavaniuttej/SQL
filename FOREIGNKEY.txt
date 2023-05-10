@@ -1,0 +1,641 @@
+//CREATING A TABLE AND ESTABLISHING A CONNECTION BETWEEN THE NEWLY CREATED TABLE AND EXISTING TABLE WITH THE FOREIGH KEY--------------
+SQL> SELECT *
+  2  FROM PRO
+  3  ;
+
+       PID PNAME                MFG_DATE  EXP_DATE  BRAND                               PRICE    PWEIGHT INSTOCK
+---------- -------------------- --------- --------- ------------------------------ ---------- ------
+         1 SOAP                 03-JUL-13 05-NOV-14 SANTOOR                                65       23.4 YES
+         2 PASTE                30-DEC-18 05-MAY-19 CLOSEUP                                60      38.97 YES
+         3 RICE                 08-MAY-13 05-JUL-15 TATA                                 2500      20.32 YES
+         4 RICE                 03-JUL-19 05-MAY-21 HMT                                  2450      32.56 NO
+         5 SHAMPOO              06-MAY-19 05-JUL-21 CHICK                                   1         .2 YES
+         6 SHAMPOO              25-MAY-19 25-NOV-21 HEAD&SHOLDER                            2        .25 YES
+         7 DAL                  25-JUL-19 28-MAY-21 ACHI                                   89      65.25 YES
+         8 SALT                 03-NOV-19 09-DEC-23 TATA                                   10      100.5 YES
+         9 PAIN BALM            05-JUL-19 10-MAY-23 ZANDU                                  58      58.25 NO
+        10 COOL DRINK           09-AUG-16 08-MAR-17 PEPSI                                  20        100 YES
+        11 BISCUIT              05-MAY-19 06-AUG-19 BRITANIA                               10        100 YES
+        12 SAMBAR MASALA        06-AUG-19 08-MAR-20 MTR                                    15      59.25 YES
+        13 BIRYANI RICE         21-NOV-19 28-AUG-20 INDIAN GATE                       2879.56    9454.95 NO
+        14 CURD                 02-MAY-18 05-MAY-18 HERITAGE                               10        100 YES
+        15 MILK                 05-JAN-23 08-JAN-23 HERITAGE                               10        100 NO
+
+15 rows selected.
+------CREATING NEW TABLE---------------------------------------------------------------------------------------
+SQL> CREATE TABLE CUSTM
+  2  (
+  3  CID
+  4  NUMBER(5) PRIMARY KEY,
+  5  CNAME VARCHAR(30) NOT NULL,
+  6  PHNO NUMBER(10) CHECK(LENGTH(PHNO)=10),
+  7  EMAIL VARCHAR(20) NOT NULL
+  8 );
+
+Table created.
+
+SQL> INSERT INTO CUSTM VALUES(&CID,&CNAME,&PHNO,&EMAIL);
+Enter value for cid: 111
+Enter value for cname: 'BUNNY'
+Enter value for phno: 9875822587
+Enter value for email: 'BUNNY@GMAIL.COM'
+old   1: INSERT INTO CUSTM VALUES(&CID,&CNAME,&PHNO,&EMAIL)
+new   1: INSERT INTO CUSTM VALUES(111,'BUNNY',9875822587,'BUNNY@GMAIL.COM')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 112
+Enter value for cname: 'SNEHA'
+Enter value for phno: 9321456589
+Enter value for email: 'SNEHA@GMAIL.COM'
+old   1: INSERT INTO CUSTM VALUES(&CID,&CNAME,&PHNO,&EMAIL)
+new   1: INSERT INTO CUSTM VALUES(112,'SNEHA',9321456589,'SNEHA@GMAIL.COM')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 113
+Enter value for cname: 'RAKESH'
+Enter value for phno: 9133020584
+Enter value for email: 'RAKESH@GMAIL.COM'
+old   1: INSERT INTO CUSTM VALUES(&CID,&CNAME,&PHNO,&EMAIL)
+new   1: INSERT INTO CUSTM VALUES(113,'RAKESH',9133020584,'RAKESH@GMAIL.COM')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 114
+Enter value for cname: 'SAMALA'
+Enter value for phno: 8125493262
+Enter value for email: 'SAMALA@GMAIL.COM'
+old   1: INSERT INTO CUSTM VALUES(&CID,&CNAME,&PHNO,&EMAIL)
+new   1: INSERT INTO CUSTM VALUES(114,'SAMALA',8125493262,'SAMALA@GMAIL.COM')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 115
+Enter value for cname: 'KUMAR'
+Enter value for phno: 9878456532
+Enter value for email: 'KUMAR@GMAIL.COM'
+old   1: INSERT INTO CUSTM VALUES(&CID,&CNAME,&PHNO,&EMAIL)
+new   1: INSERT INTO CUSTM VALUES(115,'KUMAR',9878456532,'KUMAR@GMAIL.COM')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 116
+Enter value for cname: 'RAVI'
+Enter value for phno: 8952462482
+Enter value for email: 'RAVI@GMAIL.COM'
+old   1: INSERT INTO CUSTM VALUES(&CID,&CNAME,&PHNO,&EMAIL)
+new   1: INSERT INTO CUSTM VALUES(116,'RAVI',8952462482,'RAVI@GMAIL.COM')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 117
+Enter value for cname: 'UTTEJ'
+Enter value for phno: 8125493262
+Enter value for email: 'UTTEJ@GAMIL.COM'
+old   1: INSERT INTO CUSTM VALUES(&CID,&CNAME,&PHNO,&EMAIL)
+new   1: INSERT INTO CUSTM VALUES(117,'UTTEJ',8125493262,'UTTEJ@GAMIL.COM')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 118
+Enter value for cname: 'SUNNY'
+Enter value for phno: 8945632548
+Enter value for email: 'SUNNY@GMAIL.COM'
+old   1: INSERT INTO CUSTM VALUES(&CID,&CNAME,&PHNO,&EMAIL)
+new   1: INSERT INTO CUSTM VALUES(118,'SUNNY',8945632548,'SUNNY@GMAIL.COM')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 119
+Enter value for cname: 'VANI'
+Enter value for phno: 9440156585
+Enter value for email: 'VANI@GMAIL.COM'
+old   1: INSERT INTO CUSTM VALUES(&CID,&CNAME,&PHNO,&EMAIL)
+new   1: INSERT INTO CUSTM VALUES(119,'VANI',9440156585,'VANI@GMAIL.COM')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 120
+Enter value for cname: 'VEERESH'
+Enter value for phno: 6521439875
+Enter value for email: 'VEERESH@GMAIL.COM'
+old   1: INSERT INTO CUSTM VALUES(&CID,&CNAME,&PHNO,&EMAIL)
+new   1: INSERT INTO CUSTM VALUES(120,'VEERESH',6521439875,'VEERESH@GMAIL.COM')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 121
+Enter value for cname: 'JONNY'
+Enter value for phno: 9876541234
+Enter value for email: 'JONNY@GMAIL.COM'
+old   1: INSERT INTO CUSTM VALUES(&CID,&CNAME,&PHNO,&EMAIL)
+new   1: INSERT INTO CUSTM VALUES(121,'JONNY',9876541234,'JONNY@GMAIL.COM')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 122
+Enter value for cname: 'SAMAD'
+Enter value for phno: 9876325412
+Enter value for email: 'SAMAD@GMAIL.COM'
+old   1: INSERT INTO CUSTM VALUES(&CID,&CNAME,&PHNO,&EMAIL)
+new   1: INSERT INTO CUSTM VALUES(122,'SAMAD',9876325412,'SAMAD@GMAIL.COM')
+
+1 row created.
+SQL> /
+Enter value for cid: 123
+Enter value for cname: 'SAI'
+Enter value for phno: 9874563214
+Enter value for email: 'SAI@GMAIL.COM'
+old   1: INSERT INTO CUSTM VALUES(&CID,&CNAME,&PHNO,&EMAIL)
+new   1: INSERT INTO CUSTM VALUES(123,'SAI',9874563214,'SAI@GMAIL.COM')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 124
+Enter value for cname: 'CHANDU'
+Enter value for phno: 9658742365
+Enter value for email: 'CHANDU@GMAIL.COM'
+old   1: INSERT INTO CUSTM VALUES(&CID,&CNAME,&PHNO,&EMAIL)
+new   1: INSERT INTO CUSTM VALUES(124,'CHANDU',9658742365,'CHANDU@GMAIL.COM')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 125
+Enter value for cname: 'MITTU'
+Enter value for phno: 9852641785
+Enter value for email: 'MITTU@GMAIL.COM'
+old   1: INSERT INTO CUSTM VALUES(&CID,&CNAME,&PHNO,&EMAIL)
+new   1: INSERT INTO CUSTM VALUES(125,'MITTU',9852641785,'MITTU@GMAIL.COM')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 126
+Enter value for cname: 'NANI'
+Enter value for phno: 9587423654
+Enter value for email: 'NANI@GMAIL.COM'
+old   1: INSERT INTO CUSTM VALUES(&CID,&CNAME,&PHNO,&EMAIL)
+new   1: INSERT INTO CUSTM VALUES(126,'NANI',9587423654,'NANI@GMAIL.COM')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 127
+Enter value for cname: 'MANI'
+Enter value for phno: 9852145635
+Enter value for email: 'MANI@GMAIL.COM'
+old   1: INSERT INTO CUSTM VALUES(&CID,&CNAME,&PHNO,&EMAIL)
+new   1: INSERT INTO CUSTM VALUES(127,'MANI',9852145635,'MANI@GMAIL.COM')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 128
+Enter value for cname: 'NARESH'
+Enter value for phno: 9824563875
+Enter value for email: 'NARESH@GMAIL.COM'
+old   1: INSERT INTO CUSTM VALUES(&CID,&CNAME,&PHNO,&EMAIL)
+new   1: INSERT INTO CUSTM VALUES(128,'NARESH',9824563875,'NARESH@GMAIL.COM')
+
+1 row created.
+
+SQL> /
+Enter value for cid: 129
+Enter value for cname: 'VIRAT'
+Enter value for phno: 9875268452
+Enter value for email: 'VIRAT@GMAIL.COM'
+old   1: INSERT INTO CUSTM VALUES(&CID,&CNAME,&PHNO,&EMAIL)
+new   1: INSERT INTO CUSTM VALUES(129,'VIRAT',9875268452,'VIRAT@GMAIL.COM')
+
+1 row created.
+SQL> /
+Enter value for cid: 130
+Enter value for cname: 'VIYAN'
+Enter value for phno: 9852478542
+Enter value for email: 'VIYAN@GMAIL.COM'
+old   1: INSERT INTO CUSTM VALUES(&CID,&CNAME,&PHNO,&EMAIL)
+new   1: INSERT INTO CUSTM VALUES(130,'VIYAN',9852478542,'VIYAN@GMAIL.COM')
+
+1 row created.
+
+SQL> COMMIT ;
+
+Commit complete.
+
+SQL> SELECT * FROM CUSTM;
+
+       CID CNAME                                PHNO EMAIL
+---------- ------------------------------ ---------- --------------------
+       111 BUNNY                          9875822587 BUNNY@GMAIL.COM
+       112 SNEHA                          9321456589 SNEHA@GMAIL.COM
+       113 RAKESH                         9133020584 RAKESH@GMAIL.COM
+       114 SAMALA                         8125493262 SAMALA@GMAIL.COM
+       115 KUMAR                          9878456532 KUMAR@GMAIL.COM
+       116 RAVI                           8952462482 RAVI@GMAIL.COM
+       117 UTTEJ                          8125493262 UTTEJ@GAMIL.COM
+       118 SUNNY                          8945632548 SUNNY@GMAIL.COM
+       119 VANI                           9440156585 VANI@GMAIL.COM
+       120 VEERESH                        6521439875 VEERESH@GMAIL.COM
+       121 JONNY                          9876541234 JONNY@GMAIL.COM
+       122 SAMAD                          9876325412 SAMAD@GMAIL.COM
+       123 SAI                            9874563214 SAI@GMAIL.COM
+       124 CHANDU                         9658742365 CHANDU@GMAIL.COM
+       125 MITTU                          9852641785 MITTU@GMAIL.COM
+       126 NANI                           9587423654 NANI@GMAIL.COM
+       127 MANI                           9852145635 MANI@GMAIL.COM
+       128 NARESH                         9824563875 NARESH@GMAIL.COM
+       129 VIRAT                          9875268452 VIRAT@GMAIL.COM
+       130 VIYAN                          9852478542 VIYAN@GMAIL.COM
+
+20 rows selected.
+
+SQL> ALTER TABLE CUSTM
+  2  ADD PID NUMBER(5) NULL;
+
+Table altered.
+
+SQL> SELECT *
+  2  FROM CUSTM;
+
+       CID CNAME                                PHNO EMAIL                       PID
+---------- ------------------------------ ---------- -------------------- ----------
+       111 BUNNY                          9875822587 BUNNY@GMAIL.COM
+       112 SNEHA                          9321456589 SNEHA@GMAIL.COM
+       113 RAKESH                         9133020584 RAKESH@GMAIL.COM
+       114 SAMALA                         8125493262 SAMALA@GMAIL.COM
+       115 KUMAR                          9878456532 KUMAR@GMAIL.COM
+       116 RAVI                           8952462482 RAVI@GMAIL.COM
+       117 UTTEJ                          8125493262 UTTEJ@GAMIL.COM
+       118 SUNNY                          8945632548 SUNNY@GMAIL.COM
+       119 VANI                           9440156585 VANI@GMAIL.COM
+       120 VEERESH                        6521439875 VEERESH@GMAIL.COM
+       121 JONNY                          9876541234 JONNY@GMAIL.COM
+       122 SAMAD                          9876325412 SAMAD@GMAIL.COM
+       123 SAI                            9874563214 SAI@GMAIL.COM
+       124 CHANDU                         9658742365 CHANDU@GMAIL.COM
+       125 MITTU                          9852641785 MITTU@GMAIL.COM
+       126 NANI                           9587423654 NANI@GMAIL.COM
+       127 MANI                           9852145635 MANI@GMAIL.COM
+       128 NARESH                         9824563875 NARESH@GMAIL.COM
+       129 VIRAT                          9875268452 VIRAT@GMAIL.COM
+       130 VIYAN                          9852478542 VIYAN@GMAIL.COM
+
+20 rows selected.
+
+SQL> ALTER TABLE CUSTM
+  2  ADD FOREIGN KEY(PID) REFERENCES PRO(PID);
+
+Table altered.
+
+SQL> SELECT * FROM PRO;
+
+       PID PNAME                MFG_DATE  EXP_DATE  BRAND                               PRICE    PWEIGHT INSTOCK
+---------- -------------------- --------- --------- ------------------------------ ---------- ------
+         1 SOAP                 03-JUL-13 05-NOV-14 SANTOOR                                65       23.4 YES
+         2 PASTE                30-DEC-18 05-MAY-19 CLOSEUP                                60      38.97 YES
+         3 RICE                 08-MAY-13 05-JUL-15 TATA                                 2500      20.32 YES
+         4 RICE                 03-JUL-19 05-MAY-21 HMT                                  2450      32.56 NO
+         5 SHAMPOO              06-MAY-19 05-JUL-21 CHICK                                   1         .2 YES
+         6 SHAMPOO              25-MAY-19 25-NOV-21 HEAD&SHOLDER                            2        .25 YES
+         7 DAL                  25-JUL-19 28-MAY-21 ACHI                                   89      65.25 YES
+         8 SALT                 03-NOV-19 09-DEC-23 TATA                                   10      100.5 YES
+         9 PAIN BALM            05-JUL-19 10-MAY-23 ZANDU                                  58      58.25 NO
+        10 COOL DRINK           09-AUG-16 08-MAR-17 PEPSI                                  20        100 YES
+        11 BISCUIT              05-MAY-19 06-AUG-19 BRITANIA                               10        100 YES
+        12 SAMBAR MASALA        06-AUG-19 08-MAR-20 MTR                                    15      59.25 YES
+        13 BIRYANI RICE         21-NOV-19 28-AUG-20 INDIAN GATE                       2879.56    9454.95 NO
+        14 CURD                 02-MAY-18 05-MAY-18 HERITAGE                               10        100 YES
+        15 MILK                 05-JAN-23 08-JAN-23 HERITAGE                               10        100 NO
+
+15 rows selected.
+
+SQL> SELECT *
+  2  FROM CUSTM;
+
+       CID CNAME                                PHNO EMAIL                       PID
+---------- ------------------------------ ---------- -------------------- ----------
+       111 BUNNY                          9875822587 BUNNY@GMAIL.COM
+       112 SNEHA                          9321456589 SNEHA@GMAIL.COM
+       113 RAKESH                         9133020584 RAKESH@GMAIL.COM
+       114 SAMALA                         8125493262 SAMALA@GMAIL.COM
+       115 KUMAR                          9878456532 KUMAR@GMAIL.COM
+       116 RAVI                           8952462482 RAVI@GMAIL.COM
+       117 UTTEJ                          8125493262 UTTEJ@GAMIL.COM
+       118 SUNNY                          8945632548 SUNNY@GMAIL.COM
+       119 VANI                           9440156585 VANI@GMAIL.COM
+       120 VEERESH                        6521439875 VEERESH@GMAIL.COM
+       121 JONNY                          9876541234 JONNY@GMAIL.COM
+       122 SAMAD                          9876325412 SAMAD@GMAIL.COM
+       123 SAI                            9874563214 SAI@GMAIL.COM
+       124 CHANDU                         9658742365 CHANDU@GMAIL.COM
+       125 MITTU                          9852641785 MITTU@GMAIL.COM
+       126 NANI                           9587423654 NANI@GMAIL.COM
+       127 MANI                           9852145635 MANI@GMAIL.COM
+       128 NARESH                         9824563875 NARESH@GMAIL.COM
+       129 VIRAT                          9875268452 VIRAT@GMAIL.COM
+       130 VIYAN                          9852478542 VIYAN@GMAIL.COM
+
+20 rows selected.
+
+SQL> UPDATE CUSTM
+  2  SET PID=2
+  3  WHERE CID=112;
+
+1 row updated.
+
+SQL> SELECT *
+  2  FROM CUSTM;
+
+       CID CNAME                                PHNO EMAIL                       PID
+---------- ------------------------------ ---------- -------------------- ----------
+       111 BUNNY                          9875822587 BUNNY@GMAIL.COM
+       112 SNEHA                          9321456589 SNEHA@GMAIL.COM               2
+       113 RAKESH                         9133020584 RAKESH@GMAIL.COM
+       114 SAMALA                         8125493262 SAMALA@GMAIL.COM
+       115 KUMAR                          9878456532 KUMAR@GMAIL.COM
+       116 RAVI                           8952462482 RAVI@GMAIL.COM
+       117 UTTEJ                          8125493262 UTTEJ@GAMIL.COM
+       118 SUNNY                          8945632548 SUNNY@GMAIL.COM
+       119 VANI                           9440156585 VANI@GMAIL.COM
+       120 VEERESH                        6521439875 VEERESH@GMAIL.COM
+       121 JONNY                          9876541234 JONNY@GMAIL.COM
+       122 SAMAD                          9876325412 SAMAD@GMAIL.COM
+       123 SAI                            9874563214 SAI@GMAIL.COM
+       124 CHANDU                         9658742365 CHANDU@GMAIL.COM
+       125 MITTU                          9852641785 MITTU@GMAIL.COM
+       126 NANI                           9587423654 NANI@GMAIL.COM
+       127 MANI                           9852145635 MANI@GMAIL.COM
+       128 NARESH                         9824563875 NARESH@GMAIL.COM
+       129 VIRAT                          9875268452 VIRAT@GMAIL.COM
+       130 VIYAN                          9852478542 VIYAN@GMAIL.COM
+
+20 rows selected.
+
+SQL> UPDATE  CUSTM
+  2  SET PID =4
+  3  WHERE CID=111;
+
+1 row updated.
+
+SQL> UPDATE CUSTM
+  2  SET PID =5
+  3  WHERE CID =113;
+
+1 row updated.
+
+SQL> UPDATE CUSTM
+  2  SET PID =4
+  3  WHERE CID =114;
+
+1 row updated.
+
+SQL> UPDATE CUSTM
+  2  SET PID = 3
+  3  WHERE CID =115;
+
+1 row updated.
+
+SQL> SELECT*
+  2  FROM CUSTM;
+
+       CID CNAME                                PHNO EMAIL                       PID
+---------- ------------------------------ ---------- -------------------- ----------
+       111 BUNNY                          9875822587 BUNNY@GMAIL.COM               4
+       112 SNEHA                          9321456589 SNEHA@GMAIL.COM               2
+       113 RAKESH                         9133020584 RAKESH@GMAIL.COM              5
+       114 SAMALA                         8125493262 SAMALA@GMAIL.COM              4
+       115 KUMAR                          9878456532 KUMAR@GMAIL.COM               3
+       116 RAVI                           8952462482 RAVI@GMAIL.COM
+       117 UTTEJ                          8125493262 UTTEJ@GAMIL.COM
+       118 SUNNY                          8945632548 SUNNY@GMAIL.COM
+       119 VANI                           9440156585 VANI@GMAIL.COM
+       120 VEERESH                        6521439875 VEERESH@GMAIL.COM
+       121 JONNY                          9876541234 JONNY@GMAIL.COM
+       122 SAMAD                          9876325412 SAMAD@GMAIL.COM
+       123 SAI                            9874563214 SAI@GMAIL.COM
+       124 CHANDU                         9658742365 CHANDU@GMAIL.COM
+       125 MITTU                          9852641785 MITTU@GMAIL.COM
+       126 NANI                           9587423654 NANI@GMAIL.COM
+       127 MANI                           9852145635 MANI@GMAIL.COM
+       128 NARESH                         9824563875 NARESH@GMAIL.COM
+       129 VIRAT                          9875268452 VIRAT@GMAIL.COM
+       130 VIYAN                          9852478542 VIYAN@GMAIL.COM
+
+20 rows selected.
+
+SQL> UPDATE CUSTM
+  2  SET PID =6
+  3  WHERE CID =116;
+
+1 row updated.
+
+SQL> UPDATE CUSTM
+  2  SET PID =8
+  3  WHERE CID =117;
+
+1 row updated.
+
+SQL> UPDATE CUSTM
+  2  SET PID = 6
+  3  WHERE CID =118;
+
+1 row updated.
+
+SQL> UPDATE CUSTM
+  2  SET PID = 8
+  3  WHERE CID = 119;
+
+1 row updated.
+
+SQL> UPDATE CUSTM
+  2  SET PID = 11
+  3  WHERE CID = 120;
+
+1 row updated.
+
+SQL> UPDATE CUSTM
+  2  SET PID =15
+  3  WHERE CID =121;
+
+1 row updated.
+
+SQL> UPDATE CUSTM
+  2  SET PID =13
+  3  WHERE CID =122;
+
+1 row updated.
+
+SQL> UPDATE CUSTM
+  2  SET PID =14
+  3  WHERE CID = 123;
+
+1 row updated.
+
+SQL> UPDATE CUSTM
+  2  SET PID =4
+  3  WHERE CID = 124;
+
+1 row updated.
+
+SQL> UPDATE CUSTM
+  2  SET PID 
+  3  =6
+  4  WHERE CID =125;
+
+1 row updated.
+
+SQL> UPDATE CUSTM
+  2  SET PID = 6
+  3  WHERE CID = 126;
+
+1 row updated.
+
+SQL> UPDATE CUSTM
+  2  SET PID = 7
+  3  WHERE CID = 127;
+
+1 row updated.
+
+SQL> UPDATE CUSTM
+  2  SET PID =3
+  3  WHERE CID =128;
+
+1 row updated.
+
+SQL> UPDATE CUSTM
+  2  SET PID =4
+  3  WHERE CID =129;
+
+1 row updated.
+
+SQL> UPDATE CUSTM
+  2  SET PID =9
+  3  WHERE CID = 130;
+
+1 row updated.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SELECT *
+  2  FROM CUSTM;
+
+       CID CNAME                                PHNO EMAIL                       PID
+---------- ------------------------------ ---------- -------------------- ----------
+       111 BUNNY                          9875822587 BUNNY@GMAIL.COM               4
+       112 SNEHA                          9321456589 SNEHA@GMAIL.COM               2
+       113 RAKESH                         9133020584 RAKESH@GMAIL.COM              5
+       114 SAMALA                         8125493262 SAMALA@GMAIL.COM              4
+       115 KUMAR                          9878456532 KUMAR@GMAIL.COM               3
+       116 RAVI                           8952462482 RAVI@GMAIL.COM                6
+       117 UTTEJ                          8125493262 UTTEJ@GAMIL.COM               8
+       118 SUNNY                          8945632548 SUNNY@GMAIL.COM               6
+       119 VANI                           9440156585 VANI@GMAIL.COM                8
+       120 VEERESH                        6521439875 VEERESH@GMAIL.COM            11
+       121 JONNY                          9876541234 JONNY@GMAIL.COM              15
+       122 SAMAD                          9876325412 SAMAD@GMAIL.COM              13
+       123 SAI                            9874563214 SAI@GMAIL.COM                14
+       124 CHANDU                         9658742365 CHANDU@GMAIL.COM              4
+       125 MITTU                          9852641785 MITTU@GMAIL.COM               6
+       126 NANI                           9587423654 NANI@GMAIL.COM                6
+       127 MANI                           9852145635 MANI@GMAIL.COM                7
+       128 NARESH                         9824563875 NARESH@GMAIL.COM              3
+       129 VIRAT                          9875268452 VIRAT@GMAIL.COM               4
+       130 VIYAN                          9852478542 VIYAN@GMAIL.COM               9
+
+20 rows selected.
+
+SQL> SELECT CNAME 
+  2  FROM CUSTM
+  3  WHERE PID = 5;
+
+CNAME
+------------------------------
+RAKESH
+
+SQL> SELECT PRICE 
+  2  FROM PRO
+  3  WHERE PID IN(SELECT PID 
+  4  FROM CUSTM
+  5  WHERE CNAME = 'RAKESH');
+
+     PRICE
+----------
+         1
+
+SQL> SELECT *
+  2  FROM CUSTM;
+
+       CID CNAME                                PHNO EMAIL                       PID
+---------- ------------------------------ ---------- -------------------- ----------
+       111 BUNNY                          9875822587 BUNNY@GMAIL.COM               4
+       112 SNEHA                          9321456589 SNEHA@GMAIL.COM               2
+       113 RAKESH                         9133020584 RAKESH@GMAIL.COM              5
+       114 SAMALA                         8125493262 SAMALA@GMAIL.COM              4
+       115 KUMAR                          9878456532 KUMAR@GMAIL.COM               3
+       116 RAVI                           8952462482 RAVI@GMAIL.COM                6
+       117 UTTEJ                          8125493262 UTTEJ@GAMIL.COM               8
+       118 SUNNY                          8945632548 SUNNY@GMAIL.COM               6
+       119 VANI                           9440156585 VANI@GMAIL.COM                8
+       120 VEERESH                        6521439875 VEERESH@GMAIL.COM            11
+       121 JONNY                          9876541234 JONNY@GMAIL.COM              15
+       122 SAMAD                          9876325412 SAMAD@GMAIL.COM              13
+       123 SAI                            9874563214 SAI@GMAIL.COM                14
+       124 CHANDU                         9658742365 CHANDU@GMAIL.COM              4
+       125 MITTU                          9852641785 MITTU@GMAIL.COM               6
+       126 NANI                           9587423654 NANI@GMAIL.COM                6
+       127 MANI                           9852145635 MANI@GMAIL.COM                7
+       128 NARESH                         9824563875 NARESH@GMAIL.COM              3
+       129 VIRAT                          9875268452 VIRAT@GMAIL.COM               4
+       130 VIYAN                          9852478542 VIYAN@GMAIL.COM               9
+
+20 rows selected.
+
+SQL> SELECT * FROM PRO;
+
+       PID PNAME                MFG_DATE  EXP_DATE  BRAND                               PRICE    PWEIGHT INSTOCK
+---------- -------------------- --------- --------- ------------------------------ ---------- ------
+         1 SOAP                 03-JUL-13 05-NOV-14 SANTOOR                                65       23.4 YES
+         2 PASTE                30-DEC-18 05-MAY-19 CLOSEUP                                60      38.97 YES
+         3 RICE                 08-MAY-13 05-JUL-15 TATA                                 2500      20.32 YES
+         4 RICE                 03-JUL-19 05-MAY-21 HMT                                  2450      32.56 NO
+         5 SHAMPOO              06-MAY-19 05-JUL-21 CHICK                                   1         .2 YES
+         6 SHAMPOO              25-MAY-19 25-NOV-21 HEAD&SHOLDER                            2        .25 YES
+         7 DAL                  25-JUL-19 28-MAY-21 ACHI                                   89      65.25 YES
+         8 SALT                 03-NOV-19 09-DEC-23 TATA                                   10      100.5 YES
+         9 PAIN BALM            05-JUL-19 10-MAY-23 ZANDU                                  58      58.25 NO
+        10 COOL DRINK           09-AUG-16 08-MAR-17 PEPSI                                  20        100 YES
+        11 BISCUIT              05-MAY-19 06-AUG-19 BRITANIA                               10        100 YES
+        12 SAMBAR MASALA        06-AUG-19 08-MAR-20 MTR                                    15      59.25 YES
+        13 BIRYANI RICE         21-NOV-19 28-AUG-20 INDIAN GATE                       2879.56    9454.95 NO
+        14 CURD                 02-MAY-18 05-MAY-18 HERITAGE                               10        100 YES
+        15 MILK                 05-JAN-23 08-JAN-23 HERITAGE                               10        100 NO
+
+15 rows selected.
+
+SQL> SELECT BRAND
+  2  FROM PRO
+  3  WHERE PID IN (SELECT PID
+  4  FROM CUSTM
+  5  WHERE CID =126);
+
+BRAND
+------------------------------
+HEAD&SHOLDER
+
+ 
