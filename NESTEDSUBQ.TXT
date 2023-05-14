@@ -1,0 +1,121 @@
+SQL> ------WAQTD 2ND MAX SAL?
+SQL> SELECT MAX(SAL)
+  2  FROM EMP
+  3  WHERE SAL <(SELECT MAX(SAL)
+  4  FROM EMP);
+
+  MAX(SAL)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+      3000                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+
+SQL> -----WAQTD 4TH MAX SAL?
+SQL> SELECT MAX(SAL)
+  2  FROM EMP
+  3  WHERE SAL<(SELECT MAX(SAL)
+  4  FROM EMP
+  5  WHERE SAL<(SELECT MAX(SAL)
+  6  FROM EMP
+  7  WHERE SAL<(SELECT MAX(SAL)
+  8  FROM EMP)));
+
+  MAX(SAL)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+      2850 
+SQL> ----WAQTD NAME OF THE EMP GETTING THIRD MAX SAL?          
+
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE SAL = (SELECT MAX(SAL)
+  4  FROM EMP
+  5  WHERE SAL<(SELECT MAX(SAL)
+  6  FROM EMP
+  7  WHERE SAL<(SELECT MAX(SAL)
+  8  FROM EMP)));
+
+ENAME
+----------
+JONES     
+SQL> ---WAQTD DNAME AND LOC OF THE EMPLOYEES EARNING 2 ND MAX SAL?
+SQL> SELECT DNAME,LOC
+  2  FROM DEPT
+  3  WHERE DEPTNO IN(SELECT DEPTNO
+  4  FROM EMP
+  5  WHERE SAL = (SELECT MAX(SAL)
+  6  FROM EMP
+  7  WHERE SAL< (SELECT MAX(SAL)
+  8  FROM EMP)));
+
+DNAME          LOC
+-------------- -------------
+RESEARCH       DALLAS       
+
+SQL> ---WAQTD 5 TH MINIMUM SAL?
+SQL> SELECT MIN(SAL)
+  2  FROM EMP
+  3  WHERE SAL>(SELECT MIN(SAL)
+  4  FROM EMP
+  5  WHERE SAL>(SELECT MIN(SAL)
+  6  FROM EMP
+  7  WHERE SAL>(SELECT MIN(SAL)
+  8  FROM EMP
+  9  WHERE SAL>(SELECT MIN(SAL)
+ 10  FROM EMP))));
+
+  MIN(SAL)
+----------
+      1300     
+
+
+SQL> -----WAQTD NAME AND SAL OF THE EMP EARNING 4TH MINIMUM SAL?
+SQL> SELECT ENAME ,SAL
+  2  FROM EMP
+  3  WHERE SAL=(SELECT MIN(SAL)
+  4  FROM EMP
+  5  WHERE SAL>(SELECT MIN(SAL)
+  6  FROM EMP
+  7  WHERE SAL>(SELECT MIN(SAL)
+  8  FROM EMP
+  9  WHERE SAL>(SELECT MIN(SAL)
+ 10  FROM EMP))));                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+
+
+ENAME             SAL
+---------- ----------
+WARD             1250
+MARTIN           1250
+SQL> ---WAQTD DNAME OF THE EMP EARNING 7TH MIN SAL?
+SQL> SELECT DNAME 
+  2  FROM DEPT
+  3  WHERE DEPTNO = (SELECT DEPTNO
+  4  FROM EMP
+  5  WHERE SAL=(SELECT MIN(SAL)
+  6  FROM EMP
+  7  WHERE SAL>(SELECT MIN(SAL)
+  8  FROM EMP
+  9  WHERE SAL>(SELECT MIN(SAL)
+ 10  FROM EMP
+ 11  WHERE SAL>(SELECT MIN(SAL)
+ 12  FROM EMP
+ 13  WHERE SAL>(SELECT MIN(sAL)
+ 14  FROM EMP
+ 15  WHERE SAL>(sELECT MIN(SAL)
+ 16  FROM EMP
+ 17  WHERE SAL>(SELECT MIN(SAL)
+ 18  FROM EMP))))))));
+
+
+DNAME
+--------------
+SALES
+
+SQL> ----WAQTD NO.OF EMPS GETTING 2ND MAX SAL?
+SQL> SELECT COUNT(*)
+  2  FROM EMP
+  3  WHERE SAL =(SELECT MAX(SAL)
+  4  FROM EMP
+  5  WHERE SAL<(SELECT MAX(SAL)
+  6  FROM EMP));
+
+  COUNT(*)
+----------
+         2
